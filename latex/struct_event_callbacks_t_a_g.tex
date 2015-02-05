@@ -1,0 +1,43 @@
+\hypertarget{struct_event_callbacks_t_a_g}{}\section{Event\+Callbacks\+T\+A\+G Struct Reference}
+\label{struct_event_callbacks_t_a_g}\index{Event\+Callbacks\+T\+A\+G@{Event\+Callbacks\+T\+A\+G}}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+void($\ast$ \hyperlink{struct_event_callbacks_t_a_g_aafaa4679ab0034c9b118b4e21c2488aa}{load} )()
+\item 
+void($\ast$ \hyperlink{struct_event_callbacks_t_a_g_ac52265881f5ac874dda4443ff18671c0}{draw} )(const \hyperlink{struct_input_state_t_a_g}{Input\+State\+H\+A\+N\+D\+L\+E})
+\item 
+int($\ast$ \hyperlink{struct_event_callbacks_t_a_g_a0e1bb533268f270bb6c1b67898666f25}{step} )(const \hyperlink{struct_input_state_t_a_g}{Input\+State\+H\+A\+N\+D\+L\+E})
+\item 
+void($\ast$ \hyperlink{struct_event_callbacks_t_a_g_ae74b31565dbcbc53896a67d7c678bd04}{on\+Key\+Down} )(int, const \hyperlink{struct_input_state_t_a_g}{Input\+State\+H\+A\+N\+D\+L\+E})
+\item 
+void($\ast$ \hyperlink{struct_event_callbacks_t_a_g_aa456999060f08075195ba73dc8e6a23e}{on\+Key\+Up} )(int, const \hyperlink{struct_input_state_t_a_g}{Input\+State\+H\+A\+N\+D\+L\+E})
+\item 
+void($\ast$ \hyperlink{struct_event_callbacks_t_a_g_a7caef22112076592e6192f59df21963e}{on\+Quit} )()
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{struct_event_callbacks_t_a_g_ac52265881f5ac874dda4443ff18671c0}{}\index{Event\+Callbacks\+T\+A\+G@{Event\+Callbacks\+T\+A\+G}!draw@{draw}}
+\index{draw@{draw}!Event\+Callbacks\+T\+A\+G@{Event\+Callbacks\+T\+A\+G}}
+\subsubsection[{draw}]{\setlength{\rightskip}{0pt plus 5cm}void($\ast$ Event\+Callbacks\+T\+A\+G\+::draw) (const {\bf Input\+State\+H\+A\+N\+D\+L\+E})}\label{struct_event_callbacks_t_a_g_ac52265881f5ac874dda4443ff18671c0}
+Called after clearing the screen each frame. \hypertarget{struct_event_callbacks_t_a_g_aafaa4679ab0034c9b118b4e21c2488aa}{}\index{Event\+Callbacks\+T\+A\+G@{Event\+Callbacks\+T\+A\+G}!load@{load}}
+\index{load@{load}!Event\+Callbacks\+T\+A\+G@{Event\+Callbacks\+T\+A\+G}}
+\subsubsection[{load}]{\setlength{\rightskip}{0pt plus 5cm}void($\ast$ Event\+Callbacks\+T\+A\+G\+::load) ()}\label{struct_event_callbacks_t_a_g_aafaa4679ab0034c9b118b4e21c2488aa}
+Called before the event loop begins, but after S\+D\+L initializes. \hypertarget{struct_event_callbacks_t_a_g_ae74b31565dbcbc53896a67d7c678bd04}{}\index{Event\+Callbacks\+T\+A\+G@{Event\+Callbacks\+T\+A\+G}!on\+Key\+Down@{on\+Key\+Down}}
+\index{on\+Key\+Down@{on\+Key\+Down}!Event\+Callbacks\+T\+A\+G@{Event\+Callbacks\+T\+A\+G}}
+\subsubsection[{on\+Key\+Down}]{\setlength{\rightskip}{0pt plus 5cm}void($\ast$ Event\+Callbacks\+T\+A\+G\+::on\+Key\+Down) (int, const {\bf Input\+State\+H\+A\+N\+D\+L\+E})}\label{struct_event_callbacks_t_a_g_ae74b31565dbcbc53896a67d7c678bd04}
+Called when a keydown event is received. \hypertarget{struct_event_callbacks_t_a_g_aa456999060f08075195ba73dc8e6a23e}{}\index{Event\+Callbacks\+T\+A\+G@{Event\+Callbacks\+T\+A\+G}!on\+Key\+Up@{on\+Key\+Up}}
+\index{on\+Key\+Up@{on\+Key\+Up}!Event\+Callbacks\+T\+A\+G@{Event\+Callbacks\+T\+A\+G}}
+\subsubsection[{on\+Key\+Up}]{\setlength{\rightskip}{0pt plus 5cm}void($\ast$ Event\+Callbacks\+T\+A\+G\+::on\+Key\+Up) (int, const {\bf Input\+State\+H\+A\+N\+D\+L\+E})}\label{struct_event_callbacks_t_a_g_aa456999060f08075195ba73dc8e6a23e}
+Called when a keyup event is received. \hypertarget{struct_event_callbacks_t_a_g_a7caef22112076592e6192f59df21963e}{}\index{Event\+Callbacks\+T\+A\+G@{Event\+Callbacks\+T\+A\+G}!on\+Quit@{on\+Quit}}
+\index{on\+Quit@{on\+Quit}!Event\+Callbacks\+T\+A\+G@{Event\+Callbacks\+T\+A\+G}}
+\subsubsection[{on\+Quit}]{\setlength{\rightskip}{0pt plus 5cm}void($\ast$ Event\+Callbacks\+T\+A\+G\+::on\+Quit) ()}\label{struct_event_callbacks_t_a_g_a7caef22112076592e6192f59df21963e}
+Called after step returns false. \hypertarget{struct_event_callbacks_t_a_g_a0e1bb533268f270bb6c1b67898666f25}{}\index{Event\+Callbacks\+T\+A\+G@{Event\+Callbacks\+T\+A\+G}!step@{step}}
+\index{step@{step}!Event\+Callbacks\+T\+A\+G@{Event\+Callbacks\+T\+A\+G}}
+\subsubsection[{step}]{\setlength{\rightskip}{0pt plus 5cm}int($\ast$ Event\+Callbacks\+T\+A\+G\+::step) (const {\bf Input\+State\+H\+A\+N\+D\+L\+E})}\label{struct_event_callbacks_t_a_g_a0e1bb533268f270bb6c1b67898666f25}
+Called before any events are handled or the screen is drawn. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+gui.\+h\end{DoxyCompactItemize}
