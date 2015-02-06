@@ -99,9 +99,9 @@ void RunGame(EventCallbacks *callbacks, int width,
         callbacks->draw(&is);
         SDL_UpdateWindowSurface(wnd);
         
-        unsigned int currTick=SDL_GetTick();
+        unsigned int currTick=SDL_GetTicks();
         if (currTick-lastTick<1000*fps)
-            SDL_Delay((1000*fps)-(currTick-lastTick));
+            SDL_Delay((1000*fps)-(currTick-lastTick));//TODO: check calculation
         lastTick=currTick;
     }
 
