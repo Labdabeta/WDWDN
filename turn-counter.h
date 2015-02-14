@@ -42,7 +42,7 @@ typedef struct TurnDataTAG
     int gameLength;
 } TurnData, * TurnDataHANDLE;
 
-TurnData/*HANDLE?*/ GetTurnData(void);
+TurnData GetTurnData(void);
 // Getter for the information on turns the modal tracks.
 
 #endif//TURN_COUNTER_H

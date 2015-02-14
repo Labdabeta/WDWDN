@@ -52,17 +52,7 @@ void onQuit()
 
 
 // Getter for the information on turns the modal tracks.
-TurnData/*HANDLE?*/ GetTurnData(void)
+TurnData GetTurnData(void)
 {
     return td;
 }
-
-/* const TurnDataHANDLE GetTurnData(void);
- * {
- *    return *td;
- * }
- *
- * Alternate method to do the turn data. Instead of a data structure, with a
- * copy of the currant data a read only pointer is given.
- * (Not completely safe but should be good enough for our purposes.)
- */
