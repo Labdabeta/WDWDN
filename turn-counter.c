@@ -1,12 +1,31 @@
 #include "turn-counter.h"
 
+#include <stdbool.h>
 
 
-// Internal peramiter to decide game length (2 objectives).
-static gameLengthBase = 120;
+
+// Internal peramiter to decide game length, divide out the number of players
+// and multiply by the number of objectives to get the actual game length.
+static playerTurnsPerObjective = 60;
 
 // Internal peramiter to store turns.
 static TurnData td;
+
+
+
+// "Tick" the turn counter.
+// Return 0/false if the game is over (zero turns left).
+static bool nextTurn(void)
+{
+  ++td.currant;
+  --td.remaining;
+  
+  // 0 turns marks the last turn
+  if (0 < td.remaining)
+    return TRUE;
+  else
+    return FALSE;
+}
 
 
 
@@ -14,7 +33,7 @@ static TurnData td;
 void load(void)
 {
     // Prepare the turn data.
-    td.gameLength = gameLengthBase / 4; // 4 = temp-num-of-players
+    td.gameLength = gameLengthBase * 2 / 4; // 2 objectives and 4 players.
     td.currant = 1; // or 0?
     td.remaining = td.gameLength;
 }
