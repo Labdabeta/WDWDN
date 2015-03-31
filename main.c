@@ -24,7 +24,6 @@ int step(const InputStateHANDLE is)
 void onKeyDown(int key, const InputStateHANDLE is)
 {
     //todo: call all linked onKeyDowns
-    printf("%c\n",(char)key);
 }
 
 void onKeyUp(int key, const InputStateHANDLE is)
