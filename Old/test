@@ -1,0 +1,24 @@
+#Sources:
+SOURCES = test.c
+
+#Objects:
+OBJECTS = $(SOURCES:.c=.o)
+
+#Executable:
+EXECUTABLE = test.exe
+
+#Compiler:
+CC = gcc
+
+#Flags:
+SDLLINK = -LC:\Users\Louis\Documents\SDL2-2.0.3\i686-w64-mingw32\lib
+LIBRARIES = -lmingw32 -lSDL2main -lSDL2 
+GUIFLAGS = -w -Wl,-subsystem,windows
+
+
+all: $(SOURCES)
+	$(CC) gui.o $(SOURCES) $(SDLLINK) $(LIBRARIES) -o $(EXECUTABLE)
+
+
+
+
