@@ -99,6 +99,7 @@ void RunGame(EventCallbacks *callbacks, int width,
         callbacks->draw(&is);
         SDL_UpdateWindowSurface(wnd);
         
+        // Frame Rate Limiter
         unsigned int currTick=SDL_GetTicks();
         if (currTick-lastTick<1000/fps)
             SDL_Delay((1000/fps)-(currTick-lastTick));
