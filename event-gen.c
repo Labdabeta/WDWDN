@@ -18,7 +18,9 @@ static enum EventClass
     GoodEvent,
     NeturalEvent,
     BadEvent,
-    VeryBadEvent
+    VeryBadEvent,
+
+    EventClassNumber
 };
 
 // A structure that wraps up all the data about an event.
@@ -31,15 +33,59 @@ static typedef struct EventCardTAG
     void (*resolve)(void);
 } EventCard, * EventCardHANDLE;
 
-// A holder for all the events [class][event];
-EventCard ** allEvents;
+// A holder for all the events [class][event].
+static EventCardHANDLE allEvents[EventClassNumber];
+
+// A counter for all the events [class].
+static int const numEvents[EventClassNumber] = {1, 1, 0, 0, 0, 0, 0};
 
 
 
 // Loads items are prepares to start the game (more peramiters needed?)
 void load(void)
 {
+  /* DO NOT UNCOMMENT WITHOUT COMPLETING
+  // Load all event cards into the events regester.
+  // NextTurnEvent
+  allEvents[NextTurnEvent] = malloc(sizeof(EventCard)*numEvents[NextTurnEvent])
+  allEvents[NextTurnEvent][0] ... init ...
 
+  // FluxEvent
+  allEvents[FluxEvent] = malloc(sizeof(EventCard) * numEvents[FluxEvent])
+  allEvents[FluxEvent][0] ... init ...
+
+  // VeryGoodEvent(s)
+  allEvents[VeryGoodEvent] = malloc(sizeof(EventCard)*numEvents[VeryGoodEvent])
+  // OR
+  allEvents[VeryGoodEvent] = malloc(sizeof(EventCard) * NUM_VGE)
+  allEvents[VeryGoodEvent][0] ... init ...
+  // ...
+  allEvents[VeryGoodEvent][n] ... init ...
+
+  // GoodEvent(s)
+  allEvents[GoodEvent] = malloc(sizeof(EventCard) * NUM_GE)
+  allEvents[GoodEvent][0] ... init ...
+  // ...
+  allEvents[GoodEvent][n] ... init ...
+
+  // NeturalEvent(s)
+  allEvents[NeturalEvent] = malloc(sizeof(EventCard) * NUM_NE)
+  allEvents[NeturalEvent][0] ... init ...
+  // ...
+  allEvents[NeturalEvent][n] ... init ...
+
+  // BadEvent(s)
+  allEvents[BadEvent] = malloc(sizeof(EventCard) * NUM_BE)
+  allEvents[BadEvent][0] ... init ...
+  // ...
+  allEvents[BadEvent][n] ... init ...
+
+  // VeryBadEvent(s)
+  allEvents[VeryBadEvent] = malloc(sizeof(EventCard) * NUM_VBE)
+  allEvents[VeryBadEvent][0] ... init ...
+  // ...
+  allEvents[VeryBadEvent][n] ... init ...
+  */
 }
 
 // Draw to the screen.
@@ -69,5 +115,16 @@ void onKeyUp(int key, const InputStateHANDLE is)
 // Clean up.
 void onQuit()
 {
-
+  /*
+  // Clear all of the Event Cards from memory.
+  for (int i = 0 ; i < EventCardNumber ; ++i)
+  {
+    for (int j = 0 ; j < numEvents[i] ; ++j)
+    {
+      // Clean up each event card, if nessisary.
+    }
+    free(allEvents[i]);
+    allEvents[i] = NULL;
+  }
+  */
 }

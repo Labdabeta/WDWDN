@@ -59,7 +59,7 @@ void loadEvents(void)
     Positives[8]=loadSprite("WDWDN\\Events\\Pos9.png");
 
     WSC=loadSprite("WDWDN\\Events\\WSC.png");
-    
+
     selRes=0;
 
     resources[0]=loadSprite("WDWDN\\Bio.png");
@@ -125,7 +125,7 @@ void drawEvents(void)
     blitSprite(s,OFF_X,OFF_Y,0,0);
     blitSprite(resources[selRes],ROFF_X,ROFF_Y,0,0);
 }
-    
+
 
 
 void cleanEvents(void)

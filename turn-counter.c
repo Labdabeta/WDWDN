@@ -19,7 +19,7 @@ static bool nextTurn(void)
 {
   ++td.currant;
   --td.remaining;
-  
+
   // 0 turns marks the last turn
   if (0 < td.remaining)
     return TRUE;
@@ -32,10 +32,12 @@ static bool nextTurn(void)
 // Loads items are prepares to start the game (more peramiters needed?)
 void load(void)
 {
-    // Prepare the turn data.
-    td.gameLength = gameLengthBase * 2 / 4; // 2 objectives and 4 players.
-    td.currant = 1; // or 0?
-    td.remaining = td.gameLength;
+  // Prepare the turn data.
+  td.gameLength = gameLengthBase * 2 / 4; // 2 objectives and 4 players.
+  td.currant = 1;
+  td.remaining = td.gameLength - 1;
+  // Depending on how we count, the 1s in the preivous lines might be replaced
+  // with 0s. (Also ajust the end of game condition in nextTurn.)
 }
 
 // Draw to the screen.
