@@ -1,5 +1,13 @@
 #include "warp-space.h"
 
+// portal_type portals[NUM_PORTALS] = ...
+// int links[NUM_PORTALS][NUM_PORTALS] = ...
+/* Should we use a double array again? It cause some problems last time with
+ * some portals being linked twice. With a bit of extra math we could store
+ * everything once.
+ */
+// ships_types [NUM_PLAYERS] = ...
+
 
 
 // Loads items are prepares to start the game (more peramiters needed?)

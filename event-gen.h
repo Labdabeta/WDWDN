@@ -14,6 +14,8 @@
  * displaying them.
  *****************************************************************************/
 
+#include "gui.h"
+
 void load(void);
 // Loads items are prepares to start the game (more peramiters needed?)
 
