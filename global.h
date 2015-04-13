@@ -12,7 +12,8 @@
  *
  * This module is centered around the GameData structure which holds all of the
  * settings for a game. This is not complete data about the game, this is more
- * the games settings.
+ * the games settings. That is those values which are decided at the start of
+ * the game and are generally constaint until the game finishes.
  *****************************************************************************/
 
 typedef struct GameDataTAB
@@ -28,5 +29,8 @@ void load (int players);
 
 GameData GetGameData(void);
 // Return a copy of the central GameData.
+
+int GetNumPlayers(void);
+// Return just the number of players in this game.
 
 #endif//GLOBAL_H

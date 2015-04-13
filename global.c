@@ -17,3 +17,8 @@ GameData GetGameData(void)
   return gd;
 }
 
+// Return just the number of players in this game.
+int GetNumPlayers(void)
+{
+  return gd.players;
+}
