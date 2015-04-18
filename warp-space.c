@@ -12,7 +12,6 @@
 // Should we give each portal its own radius? PORTAL_MAX_RADIUS, PORTAL_MIN_R?
 #define PORTAL_RADIUS 75
 
-
 typedef struct PortalTAB {
   Sprite image; // Picture of the portal.
   int x; // x coordinate of the portal's center.
@@ -52,11 +51,32 @@ typedef struct ShipDataTAB {
   int loc; // The location in warp-space, by portal number.
   int pOffSetX; // The x offset from the portal's center.
   int pOffSetY; // The y offset from the portal's center.
-  int dockX; // The x location of the ship while docked (in real space).
-  int dockY; // The y location of the ship while docked (in real space).
+  int dockX; // The x location of the ship while docked/in real space.
+  int dockY; // The y location of the ship while docked/in real space.
+  int curX; // Currant x location of the ship's center.
+  int curY; // Currant y location of the ship's center.
 } ShipData, * ShipDataHANDLE
 
 ShipDataHANDLE ships = NULL;
+
+
+
+// Game state: is the event up or not? (Integerate into global game state?)
+int eventMode = 0;
+
+// Currantly selected player. (-1 is none, 0...n is that player)
+int selectedPlayer = -1;
+
+
+
+// Copies of static function headers.
+// Helper to the helper, find the distance between two points.
+static int distance (int x1, int y1, int x2, int y2);
+// Helper function to draw, draws links between portals.
+static void drawLink (int sx, int sy, int fx, int fy);
+// Update a ship's currant coordainates according to its location.
+static void moveShip (int i);
+
 
 
 
@@ -146,8 +166,6 @@ void load(void)
    */
 }
 
-void drawLink (int sx, int sy, int fx, int fy);
-
 // Draw to the screen.
 void draw (const InputStateHANDLE is)
 {
@@ -196,14 +214,8 @@ void draw (const InputStateHANDLE is)
   }
 }
 
-// Helper to the helper, find the distance between two points.
-int distance (int x1, int y1, int x2, int y2)
-{
-  return sqrt( (x2-x1)*(x2-x1) + (y2-y1)*(y2-y1) );
-}
-
 // Helper function to draw, draws links between portals.
-void drawLink (int sx, int sy, int fx, int fy)
+static void drawLink (int sx, int sy, int fx, int fy)
 {
   int dx = fx > sx ? (fx-sx) : (sx-fx);
   int dy = fy > sx ? (fy-sy) : (sy-fy);
@@ -232,23 +244,98 @@ void drawLink (int sx, int sy, int fx, int fy)
   }
 }
 
+
+
 // Not sure.
 int step  (const InputStateHANDLE is)
 {
 
 }
 
+
+
 // Input Handlers.
 void onKeyDown(int key, const InputStateHANDLE is)
 {
+  // Left Mouse Button is pressed.
+  if (key == 1)
+  {
+    // If there is no selected player.
+    if (0 > selectedPlayer)
+    {
+      int i;
+      for (i = 0 ; i < numShips ; ++i)
+      {
+        if (SHIP_RADIUS > distance(is->mx,is-my, ships[i].curX,ships[i].curY))
+        {
+          selectedPlayer = i;
+          break;
+        }
+      }
+    }
+    // If there is a selected player.
+    else
+    {
+      if (is->mx < SHIP_WIDTH)
+      {
+        ships[selectedPlayer].loc = -1;
+        moveShip(selectedPlayer);
+        selectedPlayer = -1;
+      }
+      else
+      {
+        int i;
+        for (i = 0 ; i < NUM_PORTALS /*Check changed is that important*/ ; ++i)
+        {
+          if (PORTAL_RADIUS > distance(is->mx, is->my,
+                                       portals[i].x, portals[i].y))
+          {
+            // Move to real space.
+            if (i == ships[selectedPlayer].loc)
+            {
+              ships[selectedPlayer].loc = -1;
+              moveShip(selectedPlayer);
+            }
+            // Move across warp space.
+            else
+            {
+              ships[selectedPlayer].loc = i;
+              moveShip(selectedPlayer);
+            }
+            selectedPlayer = -1;
+            break;
+          }
+        }
+      }
+    }
+    // ???
+    handleClick(is->mx, is->my);
+  }
 
+  // Right Mouse Button is pressed.
+  else if (key == 2)
+    // Unselect the currant player.
+    selectedPlayer = -1;
+
+  // Space Bar is presssed.
+  else if (key == ' ')
+  {
+    // Toggle the eventMode (in between turns).
+    if (eventMode)
+      eventMode = 0;
+    else
+    {
+      // Should this go to the event handler?
+      eventMode = -1;
+    }
+  }
 }
 
-// Input Handlers.
+// Input Handler: Does nothing...
 void onKeyUp(int key, const InputStateHANDLE is)
-{
+{}
 
-}
+
 
 // Clean up.
 void onQuit()
@@ -279,5 +366,32 @@ void warpFlux(void)
       // "PRAISE RNGESUS!!!"
       links[i][j] = (rand()%100 > PORTAL_DENSITY);
     }
+  }
+}
+
+
+
+// General helpers:
+
+// Find the distance between two points.
+static int distance (int x1, int y1, int x2, int y2)
+{
+  return sqrt( (x2-x1)*(x2-x1) + (y2-y1)*(y2-y1) );
+}
+
+// Update a ship's currant coordainates according to its location.
+static void moveShip (int i)
+{
+  // Ship is docked.
+  if (0 > ships[i].loc)
+  {
+    ships[i].curX = ships[i].dockX;
+    ships[i].curY = ships[i].dockY;
+  }
+  // Ship is at a portal.
+  else
+  {
+    ships[i].curX = portals[ships[i].loc].x + ships.pOffSetX;
+    ships[i].curY = portals[ships[i].loc].y + ships.pOffSetY;
   }
 }

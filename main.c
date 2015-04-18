@@ -18,6 +18,8 @@ void draw(const InputStateHANDLE is)
 int step(const InputStateHANDLE is)
 {
     //todo: call all linked steps
+
+    // Quit on space is down?
     return !is->keys[' '];
 }
 
